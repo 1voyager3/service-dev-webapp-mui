@@ -21,7 +21,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import logo from '../../assets/logo.svg';
 
-
+// @desc it comes as helper function from Material-UI AppBar section
 function ElevationScroll(props) {
     const { children } = props;
 
@@ -119,7 +119,7 @@ const useStyle = makeStyles(theme => ({
     },
 }));
 
-const Header = (props) => {
+const Header = ({ value, setValue, selectedIndex, setSelectedIndex  }) => {
 
     const classes = useStyle();
     const theme = useTheme();
@@ -127,10 +127,8 @@ const Header = (props) => {
 
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-    const [value, setValue] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const handleChange = (e, newValue) => {
@@ -219,10 +217,13 @@ const Header = (props) => {
                     ))
 
                 }
-            </Tabs >
-            <Button variant="contained" color="secondary" className={ classes.button } >
+            </Tabs>
+            <Button variant="contained"
+                    color="secondary"
+                    className={ classes.button }
+            >
                 Free Estimate
-            </Button >
+            </Button>
             <Menu
                 id="simple-menu"
                 anchorEl={ anchorEl }
@@ -232,12 +233,12 @@ const Header = (props) => {
                 MenuListProps={ { onMouseLeave: handleClose } }
                 elevation={ 0 }
                 keepMounted
-                style={{zIndex: 1302}}
+                style={ { zIndex: 1302 } }
             >
                 {
                     menuOptions.map((option, index) => (
                             <MenuItem
-                                key={ `${option}${index}` }
+                                key={ `${ option }${ index }` }
                                 component={ Link }
                                 to={ option.link }
                                 classes={ { root: classes.menuItem } }
@@ -249,11 +250,11 @@ const Header = (props) => {
                                 selected={ index === selectedIndex && value === 1 }
                             >
                                 { option.name }
-                            </MenuItem >
+                            </MenuItem>
                         ),
                     )
                 }
-            </Menu >
+            </Menu>
         </>
     );
 
@@ -270,7 +271,7 @@ const Header = (props) => {
 
                 <div className={ classes.toolBarMargin } />
 
-                <List disablePadding >
+                <List disablePadding>
 
                     {
                         routes.map((route, index) => (
@@ -292,8 +293,8 @@ const Header = (props) => {
                                     className={ classes.drawerItem }
                                 >
                                     { route.name }
-                                </ListItemText >
-                            </ListItem >
+                                </ListItemText>
+                            </ListItem>
                         ))
                     }
 
@@ -306,7 +307,7 @@ const Header = (props) => {
                         divider
                         button
                         component={ Link }
-                        to='/estimate'
+                        to="/estimate"
                         classes={ { root: classes.drawerItemEstimate, selected: classes.drawerItemSelected } }
                     >
                         <ListItemText
@@ -314,10 +315,10 @@ const Header = (props) => {
                             disableTypography
                         >
                             Free Estimate
-                        </ListItemText >
-                    </ListItem >
-                </List >
-            </SwipeableDrawer >
+                        </ListItemText>
+                    </ListItem>
+                </List>
+            </SwipeableDrawer>
             <IconButton
                 onClick={ () => setOpenDrawer(!openDrawer) }
                 disableRipple
@@ -326,15 +327,17 @@ const Header = (props) => {
                 <MenuIcon
                     className={ classes.drawerIcon }
                 />
-            </IconButton >
+            </IconButton>
         </>
     );
 
     return (
         <>
-            <ElevationScroll >
-                <AppBar position="fixed" className={ classes.appBar } >
-                    <Toolbar disableGutters >
+            <ElevationScroll>
+                <AppBar position="fixed"
+                        className={ classes.appBar }
+                >
+                    <Toolbar disableGutters>
                         <Button
                             component={ Link }
                             to="/"
@@ -342,14 +345,17 @@ const Header = (props) => {
                             onClick={ () => setValue(0) }
                             disableRipple
                         >
-                            <img src={ logo } alt="company logo" className={ classes.logo } />
-                        </Button >
+                            <img src={ logo }
+                                 alt="company logo"
+                                 className={ classes.logo }
+                            />
+                        </Button>
                         {
                             matches ? drawer : tabs
                         }
-                    </Toolbar >
-                </AppBar >
-            </ElevationScroll >
+                    </Toolbar>
+                </AppBar>
+            </ElevationScroll>
             <div className={ classes.toolBarMargin } />
         </>
     );
