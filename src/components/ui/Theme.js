@@ -22,7 +22,7 @@ const theme = createMuiTheme({
         tab: {
             fontFamily: 'Raleway',
             textTransform: 'none',
-            fontWeight: '700',
+            fontWeight: 700,
             fontSize: '1rem',
         },
         estimate: {
@@ -33,7 +33,7 @@ const theme = createMuiTheme({
         },
         h2: {
             fontFamily: 'Raleway',
-            fontWeight: '700',
+            fontWeight: 700,
             fontSize: '2.5rem',
             color: arcBlue,
             lineHeight: 1.5,
@@ -47,17 +47,27 @@ const theme = createMuiTheme({
             fontFamily: 'Raleway',
             fontSize: '1.75rem',
             color: arcBlue,
-            fontWeight: '700',
+            fontWeight: 700,
         },
         subtitle1: {
             fontSize: '1.25rem',
-            fontWeight: '300',
+            fontWeight: 300,
             color: arcGrey,
         },
         subtitle2: {
             fontSize: '1.25rem',
-            fontWeight: '300',
+            fontWeight: 300,
             color: 'white',
+        },
+        body1: {
+            fontSize: '1.25rem',
+            color: arcGrey,
+            fontWeight: 300,
+        },
+        caption: {
+            fontSize: '1rem',
+            fontWeight: 300,
+            color: arcGrey,
         },
         learnButton: {
             borderColor: arcBlue,
