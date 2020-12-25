@@ -73,6 +73,7 @@ const CallToAction = ({setValue}) => {
               className={ classes.background }
         >
 
+            {/* ----------------------- Content Section ----------------------- */ }
             <Grid item style={ { marginLeft: matchesSM ? 0 : '5em', textAlign: matchesSM ? 'center' : 'inherit' } }>
                 <Grid container direction="column">
                     <Grid item>
@@ -99,6 +100,7 @@ const CallToAction = ({setValue}) => {
                 </Grid>
             </Grid>
 
+            {/* ----------------------- Button Section ----------------------- */ }
             <Grid item>
                 <Button variant="contained" className={ classes.estimateButton }
                         component={ Link } to="/estimate"

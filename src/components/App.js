@@ -11,6 +11,8 @@ import MobileApps from './MobileApps';
 import Websites from './Websites';
 import Revolution from './Revolution';
 import About from './About';
+import Contact from './Contact';
+
 
 const App = () => {
 
@@ -92,7 +94,12 @@ const App = () => {
                     />
                     <Route path="/contact"
                            exact
-                           component={ () => <div>contact</div> }
+                           render={ (props) =>
+                               <Contact
+                                   { ...props }
+                                   setValue={ setValue }
+                                   setSelectedIndex={ setSelectedIndex }
+                               /> }
                     />
                     <Route path="/estimate"
                            exact
