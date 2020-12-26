@@ -102,9 +102,9 @@ const Contact = ({ setValue, setSelectedIndex }) => {
 
     const [open, setOpen] = useState(false);
 
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    // const [alert, setAlert] = useState({ open: false, color: "" });
+    const [alert, setAlert] = useState({ open: false, message: '', backgroundColor: '' });
 
     const onChange = (event) => {
 
@@ -138,11 +138,48 @@ const Contact = ({ setValue, setSelectedIndex }) => {
 
     const onConfirm = () => {
 
-        axios.get('https://us-central1-service-development-webapp.cloudfunctions.net/sendMail')
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        setLoading(true);
 
+        axios.get('https://us-central1-service-development-webapp.cloudfunctions.net/sendMail',
+            {
+                params: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                },
+            },
+        )
+            .then(res => {
+
+                setLoading(false);
+                setOpen(false);
+
+                setName('');
+                setEmail('');
+                setPhone('');
+                setMessage('');
+
+                setAlert({ open: true, message: 'Message sent successfully!', backgroundColor: '#4BB543' });
+
+            })
+            .catch(err => {
+
+                setLoading(false);
+
+                setAlert({ open: true, message: 'Something went wrong, please try again', backgroundColor: '#FF3232' });
+
+            });
     };
+
+    const buttonContents = (
+        <>
+            Send Message
+            <img src={ airplane } alt="paper airplane"
+                 style={ { marginLeft: '1em' } }
+            />
+        </>
+    );
 
 
     return (
@@ -269,10 +306,7 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                                     onClick={ () => setOpen(true) }
                                     className={ classes.sendButton }
                             >
-                                Send Message
-                                <img src={ airplane } alt="paper airplane"
-                                     style={ { marginLeft: '1em' } }
-                                />
+                                { buttonContents }
                             </Button>
                         </Grid>
 
@@ -358,10 +392,9 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                                         onClick={ onConfirm }
                                         className={ classes.sendButton }
                                 >
-                                    Send Message
-                                    <img src={ airplane } alt="paper airplane"
-                                         style={ { marginLeft: '1em' } }
-                                    />
+
+                                    { loading ? <CircularProgress size={ 30 } /> : buttonContents }
+
                                 </Button>
                             </Grid>
 
@@ -370,6 +403,17 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                     </Grid>
                 </DialogContent>
             </Dialog>
+
+
+            {/* ======================== Snackbar Block ======================== */ }
+            <Snackbar
+                anchorOrigin={ { vertical: 'top', horizontal: 'center' } }
+                open={ alert.open }
+                onClose={ () => setAlert({ ...alert, open: false }) }
+                autoHideDuration={ 4000 }
+                message={ alert.message }
+                ContentProps={ { style: { backgroundColor: alert.backgroundColor } } }
+            />
 
 
             {/* ======================== Background Block ======================== */ }
