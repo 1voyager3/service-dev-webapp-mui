@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import ButtonArrow from './ui/ButtonArrow';
-import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import customSoftwareIcon from '../assets/customSoftware.svg';
 import mobileAppsIcon from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
 

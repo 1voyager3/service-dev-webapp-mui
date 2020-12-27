@@ -8,7 +8,7 @@ import twitter from '../../assets/twitter.svg';
 import instagram from '../../assets/instagram.svg';
 
 
-import footerAdornment from '../../assets/Footer Adornment.svg';
+import footerAdornment from '../../assets/footerAdornment.svg';
 
 
 const useStyles = makeStyles(theme => ({
