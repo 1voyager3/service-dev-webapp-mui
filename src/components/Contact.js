@@ -261,7 +261,7 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                         {/* ----------------------- Form Section ----------------------- */ }
                         <Grid item
                               container direction="column"
-                              style={ { maxWidth: '20em' } }
+                              style={ { width: '20em' } }
                         >
                             <Grid item style={ { marginBottom: '0.5em' } }>
                                 <TextField label="Name" id="name" fullWidth
@@ -289,8 +289,9 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                             <TextField id="message" multiline rows={ 10 } fullWidth
                                        value={ message } onChange={ (e) => setMessage(e.target.value) }
                                        InputProps={ { disableUnderline: true } }
+                                       placeholder="Tell us more about your project"
                                        className={ classes.message }
-                                       style={ { maxWidth: '20em' } }
+                                       style={ { width: '20em' } }
                             />
                         </Grid>
 
@@ -317,13 +318,13 @@ const Contact = ({ setValue, setSelectedIndex }) => {
 
 
             {/* ======================== Dialog Block ======================== */ }
-            <Dialog open={ open } fullScreen={ matchesXS }
+            <Dialog open={ open } fullScreen={ matchesSM }
                     onClose={ () => setOpen(false) }
                     PaperProps={ {
                         style: {
                             paddingTop: matchesXS ? '1em' : '5em', paddingBottom: matchesXS ? '1em' : '5em',
-                            paddingLeft: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '10em' : '20em',
-                            paddingRight: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '10em' : '20em',
+                            paddingLeft: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '15em' : '25em',
+                            paddingRight: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '15em' : '25em',
                         },
                     } }
                     style={ { zIndex: 1302 } }
@@ -339,7 +340,7 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                             </Typography>
                         </Grid>
 
-                        {/* ----------------------- Dialog Form Section ----------------------- */ }
+                        {/* ----------------------- Dialog Form Sections ----------------------- */ }
                         <Grid item style={ { marginBottom: '0.5em' } }>
                             <TextField label="Name" id="name" fullWidth
                                        value={ name } onChange={ (e) => setName(e.target.value) }
@@ -361,7 +362,7 @@ const Contact = ({ setValue, setSelectedIndex }) => {
                         </Grid>
 
                         {/* ----------------------- Dialog Message Section ----------------------- */ }
-                        <Grid item style={ { maxWidth: matchesXS ? '100%' : '20em' } }>
+                        <Grid item style={ { width: matchesSM ? '100%' : '20em' } }>
                             <TextField id="message" multiline rows={ 10 } fullWidth
                                        value={ message } onChange={ (e) => setMessage(e.target.value) }
                                        InputProps={ { disableUnderline: true } }

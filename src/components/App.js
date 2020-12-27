@@ -12,6 +12,7 @@ import Websites from './Websites';
 import Revolution from './Revolution';
 import About from './About';
 import Contact from './Contact';
+import Estimate from './Estimate';
 
 
 const App = () => {
@@ -103,7 +104,12 @@ const App = () => {
                     />
                     <Route path="/estimate"
                            exact
-                           component={ () => <div>estimate</div> }
+                           render={ (props) =>
+                               <Estimate
+                                   { ...props }
+                                   setValue={ setValue }
+                                   setSelectedIndex={ setSelectedIndex }
+                               /> }
                     />
                 </Switch>
                 <Footer
