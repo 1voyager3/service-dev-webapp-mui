@@ -936,7 +936,7 @@ const Estimate = () => {
 
         axios
             .get(
-                "https://us-central1-arc-development-website.cloudfunctions.net/sendMail",
+                "https://us-central1-service-development-webapp.cloudfunctions.net/sendMail",
                 {
                     params: {
                         email: email,
